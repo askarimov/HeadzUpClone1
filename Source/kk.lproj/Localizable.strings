@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  Sovokv1
+
+  Created by Askar Karimov on 8/1/14.
+  Copyright (c) 2014 Apportable. All rights reserved.
+*/
+
+"HELLO_WORLD" = "Salem alem!";
+
+"button_title_settings"="Ozgertuler";
+"button_title_info"="Info";
+"button_title_singleplayer"="bir adam";
+"button_title_multiplayer"="Multiplayer";
+"button_title_custom"="Custom";
+"button_title_how2play"="How to play";

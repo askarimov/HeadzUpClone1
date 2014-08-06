@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  Sovokv1
+
+  Created by Askar Karimov on 8/1/14.
+  Copyright (c) 2014 Apportable. All rights reserved.
+*/
+
+"HELLO_WORLD" = "Привет мир!";
+
+"button_title_settings"="Настройки";
+"button_title_info"="Инфо";
+"button_title_singleplayer"="Одиночая";
+"button_title_multiplayer"="Мультиплеер";
+"button_title_custom"="Своя игра";
+"button_title_how2play"="Как играть?";
+
+"button_title_back"="Назад";
