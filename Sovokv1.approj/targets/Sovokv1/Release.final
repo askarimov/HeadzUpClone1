@@ -315,7 +315,8 @@
         "APPLICATION_NAME": "Sovokv1", 
         "FEATURES": [
             "opengles2", 
-            "portrait"
+            "portrait", 
+            "accelerometer"
         ], 
         "ICU_CONFIG": "normal", 
         "LONG_VERSION": "1.0", 

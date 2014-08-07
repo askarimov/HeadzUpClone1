@@ -39,17 +39,26 @@
 
     _motionManager = [[CMMotionManager alloc] init];
 
-    _timer = [NSTimer scheduledTimerWithTimeInterval:.1f target:self selector:@selector(watch) userInfo:nil repeats:YES];
-
     if (_motionManager.isDeviceMotionAvailable) {
-        _motionManager.deviceMotionUpdateInterval = kCMDeviceMotionUpdateFrequency;
-        [_motionManager startDeviceMotionUpdates];
+        
+        _motionManager.accelerometerUpdateInterval = kCMDeviceMotionUpdateFrequency;
+        
+        [self.motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue currentQueue]
+                                                 withHandler:^(CMAccelerometerData  *accelerometerData, NSError *error) {
+                                                     [self accelerometer:accelerometerData.acceleration];
+                                                     if(error){
+                                                         NSLog(@"%@", error);
+                                                     }
+                                                 }];
     }
 }
+
+
 
 - (void)stopMotionManager {
 
     if (_motionManager.isDeviceMotionAvailable) {
+        
         NSLog(@"should stop motion updpates");
         [_motionManager stopDeviceMotionUpdates];
     }
@@ -61,29 +70,24 @@
 
 
 #pragma mark - Private methods
-- (void)watch {
-    
-//    CMAcceleration gravity = currentDeviceMotion.gravity;
-//    NSLog(@"GRAVITY = %.2f", gravity.z);
-//    NSLog(@"GRAVITY Degrees = %.2f", CC_RADIANS_TO_DEGREES(gravity.z));
 
-    CMDeviceMotion *currentDeviceMotion = _motionManager.deviceMotion;
+- (void)accelerometer:(CMAcceleration)acceleration {
+	   
+//    NSLog(@"acceleration.z = %f", acceleration.z);
     
-    CMAttitude *currentAttitude = currentDeviceMotion.attitude;
+    float acc_z = acceleration.z;
     
-    float roll = currentAttitude.roll;
-        NSLog(@"fire delegate ");
-    if (CC_RADIANS_TO_DEGREES(roll) < 95 && CC_RADIANS_TO_DEGREES(roll) > 85) {
+    if (acc_z < 0.1 && acc_z > -0.1) {
         [self.delegate motionManagerDidHold];
-    }else if (CC_RADIANS_TO_DEGREES(roll) < 30 ) {
+    }else if (acc_z < -0.8 ) {
         [self.delegate motionManagerDidFlipUp];
-    }else if (CC_RADIANS_TO_DEGREES(roll) > 150 ) {
+    }else if (acc_z > 0.8 ) {
         [self.delegate motionManagerDidFlipDown];
     }else{
         [self.delegate motionManagerIdle];
     }
+    
 }
-
 
 
 @end

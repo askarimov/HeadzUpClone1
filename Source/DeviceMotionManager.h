@@ -21,11 +21,12 @@
 
 
 @interface DeviceMotionManager : NSObject
-{
-    CMMotionManager *_motionManager;
-}
+//{
+//    CMMotionManager *_motionManager;
+//}
 
 @property (nonatomic, assign) id <DeviceMotionManagerDelegate> delegate;
+@property (nonatomic, strong) CMMotionManager *motionManager;
 
 + (DeviceMotionManager *)sharedInstance;
 

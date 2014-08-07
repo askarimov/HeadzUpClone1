@@ -70,7 +70,6 @@ static NSString * const kSceneNameMain = @"MainScene";
 
 - (void)update:(CCTime)delta {
     
-    
 }
 
 #pragma mark - Handle touch events
@@ -88,6 +87,7 @@ static NSString * const kSceneNameMain = @"MainScene";
 }
 
 #pragma mark - Private methods
+
 - (void)displayEmpty {
     [_stateNode removeAllChildren];
 }
@@ -116,6 +116,7 @@ static NSString * const kSceneNameMain = @"MainScene";
 }
 
 #pragma mark - DeviceMotionManager
+
 - (void)motionManagerDidFlipUp {
     [self displayFailScene];
 }
